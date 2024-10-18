@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .color {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid black;
+        }
+        .hover {
+            padding: 20px;
+            margin: 10px;
+            border: 2px solid black;
+            background-color: lightgray;
+            text-align: center;
+        }
+        .section {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+}
+
+.header {
+    background-color: #f1f1f1;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.content {
+    padding: 10px;
+    display: block;
+}
+
+.color-box {
+    margin-top: 20px;
+    padding: 50px;
+    border: 1px solid #ccc;
+    display: inline-block;
+}
+    </style>
+
+</head>
+<body style="background-color: blue">
+
+
+    <p id="paraqraf">paragraphin deyisdir</p>
+    <button onclick="text()">sozu deyiş</button>
+<br><br>
+
+    <button onclick="mesaj()">mesaj gonder</button>
+<br><br>
+ 
+    <button onclick="backgroundcolor()">Fonun Rəngini Dəyiş</button>
+<br><br>
+
+    <p class="paragraph"> mətni deyisdir.</p>
+    <button onclick="oncilick()">metni deyisdir</button>
+<br><br>
+   
+<p class="deyis">soz 1</p>
+<p class="deyis">soz 2</p>
+<p class="deyis">soz 3</p>
+<button id="deyismek">hamisini deyis</button>
+<br><br>
+
+<p id="soz">duymə bas</p>
+<br><br>
+
+<button id="goster">Gizlət/Gostər</button>
+<p id="p">Bu paragrafın görünməsi dəyişəcək.</p>
+<br><br>
+
+
+<div class="color">1-ci cedvel</div>
+<div class="color">2-ci cedvel</div>
+<div class="color">3-cu cedvel</div>
+<button id="button">Rəngləri Dəyiş</button>
+<br><br>
+
+<div class="hover" id="item">Mouse üzərimə gətir</div>
+<br><br>
+
+<form id="form">
+ Name:   <input type="text" id="username" required>
+ Email: <input type="email" id="email" required>
+    <button type="submit">Göndər</button>
+</form>
+<br><br>
+
+<h2>alış-veriş siyahısı</h2>
+<input id="itemInput" placeholder="Məhsul adı">
+<button id="add">Əlavə et</button>
+<ul id="list"></ul>
+
+<script>
+    document.getElementById('add').onclick = () => {
+        const text = document.getElementById('itemInput').value.trim();
+        if (text) {
+            const li = document.createElement('li');
+            li.innerHTML = `${text} <span style="color:red; cursor:pointer;">Sil</span>`;
+            li.querySelector('span').onclick = () => li.remove();
+            document.getElementById('list').appendChild(li);
+            document.getElementById('itemInput').value = '';
+        } else {
+            alert('Məhsul adı daxil edin!');
+        }
+    };
+</script>
+<br><br>
+
+<div class="section">
+    <div class="header">Başlıq 1</div>
+    <div class="content">Bu, məzmun 1-dir.</div>
+</div>
+<div class="section">
+    <div class="header">Başlıq 2</div>
+    <div class="content">Bu, məzmun 2-dir.</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.section');
+
+    sections.forEach(section => {
+        const header = section.querySelector('.header');
+        const content = section.querySelector('.content');
+
+        header.addEventListener('click', () => {
+            content.classList.toggle('collapsed');
+            if (content.classList.contains('collapsed')) {
+                content.style.display = 'none';
+            } else {
+                content.style.display = 'block';
+            }
+        });
+    });
+});
+
+</script>
+<br><br>
+
+<h1>Rəng Palitrası Generatoru</h1>
+<button id="generateColor">Rəng Yarat</button>
+<div id="colorDisplay" class="color-box">Rəng burda görünəcək</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const colorButton = document.getElementById('generateColor');
+    const colorDisplay = document.getElementById('colorDisplay');
+
+    colorButton.addEventListener('click', () => {
+        const randomColor = getRandomColor();
+        colorDisplay.style.backgroundColor = randomColor;
+        colorDisplay.textContent = randomColor;
+    });
+
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+});
+
+</script>
+<script src="./app.js"></script>
+</body>
+</html>
