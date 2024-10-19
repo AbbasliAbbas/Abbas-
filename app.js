@@ -10,14 +10,11 @@ function mesaj() {
 }
 
 //3
-function backgroundcolor() {
-    var body = document.body;
-    if (body.style.backgroundColor === "blue") {
-        body.style.backgroundColor = "red"
-    } else {
-        body.style.backgroundColor = "blue"
-    }
-}
+const colorBox = document.getElementById('colorBox');
+const colorButton = document.getElementById('colorButton');
+colorButton.addEventListener('click', () => {
+ colorBox.style.backgroundColor = 'lightblue';
+});
 
 //4
 function oncilick() {
